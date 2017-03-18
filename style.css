@@ -725,11 +725,11 @@ object {
 @media only screen and (min-width: 993px) {
   .container {
     width: 100%; } }
-.newsfeed .widget {
+.widget.Nmnews_News_Cat_Style_1 .card {
   width: 50%;
-  display: inline-block; }
+  float: left; }
 
-.newsfeed .widget:first-child {
+.widget.Nmnews_News_Cat_Style_1 .card:first-child {
   width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

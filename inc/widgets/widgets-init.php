@@ -37,6 +37,8 @@ public function register_all_widgets(){
 	
 	register_widget('Nmnews_News_Cat_Style_1');
 
+	register_widget('Nmnews_News_Cat_Style_2');
+
 
 
 }
@@ -49,6 +51,9 @@ public function get_widgets(){
 
 //News Category widget Style 1
 require get_template_directory() . '/inc/widgets/widget-news-cat-style-1.php';
+
+//News Category widget Style 2
+require get_template_directory() . '/inc/widgets/widget-news-cat-style-2.php';
 
 
 

@@ -1,12 +1,12 @@
 <?php
-if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
+if ( ! class_exists( 'Nmnews_News_Cat_Style_2' ) ) :
 
 	/**
 	 * Social widget Class.
 	 *
 	 * @since 1.0.0
 	 */
-	class Nmnews_News_Cat_Style_1 extends WP_Widget {
+	class Nmnews_News_Cat_Style_2 extends WP_Widget {
 
 		/**
 		 * Constructor.
@@ -15,11 +15,11 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
 		 */
 		function __construct() {
 			$opts = array(
-				'classname'                   => 'Nmnews_News_Cat_Style_1',
-				'description'                 => esc_html__( 'News Listing Style 1', 'nmnews' ),
+				'classname'                   => 'Nmnews_News_Cat_Style_2',
+				'description'                 => esc_html__( 'News Listing Style 2', 'nmnews' ),
 				'customize_selective_refresh' => true,
 			);
-			parent::__construct( 'nmnews-news-cat-1', esc_html__( 'News Listing Style 1', 'nmnews' ), $opts );
+			parent::__construct( 'nmnews-news-cat-2', esc_html__( 'News Listing Style 2', 'nmnews' ), $opts );
 		}
 
 		/**

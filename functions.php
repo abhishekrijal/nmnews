@@ -108,6 +108,39 @@ function nmnews_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 
+	// Homepage Right Sidebar.
+	register_sidebar( array(
+		'name'          => esc_html__( 'Home Right Sidebar', 'nmnews' ),
+		'id'            => 'home-right-sidebar',
+		'description'   => esc_html__( 'Add widgets for Right Sidebar.', 'nmnews' ),
+		'before_widget' => '<div id="%1$s" class="widget card %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<span class="widget-title card-title">',
+		'after_title'   => '</span >',
+	) );
+
+	// Homepage News Feed Sidebar.
+	register_sidebar( array(
+		'name'          => esc_html__( 'Home News Feed Sidebar', 'nmnews' ),
+		'id'            => 'home-newsfeed-sidebar',
+		'description'   => esc_html__( 'Add widgets Newsfeed', 'nmnews' ),
+		'before_widget' => '<div id="%1$s" class="widget card %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<span class="widget-title card-title">',
+		'after_title'   => '</span >',
+	) );
+
+	// Homepage Left Sidebar.
+	register_sidebar( array(
+		'name'          => esc_html__( 'Home Left Sidebar', 'nmnews' ),
+		'id'            => 'home-Left-sidebar',
+		'description'   => esc_html__( 'Add widgets for Right Sidebar.', 'nmnews' ),
+		'before_widget' => '<div id="%1$s" class="widget card %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<span class="widget-title card-title">',
+		'after_title'   => '</span >',
+	) );
+
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Widget Area', 'nmnews' ),
 		'id'            => 'footer-widgets',
@@ -124,15 +157,18 @@ add_action( 'widgets_init', 'nmnews_widgets_init' );
  * Enqueue scripts and styles.
  */
 function nmnews_scripts() {
+	wp_enqueue_style( 'materialize-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons' );
+	wp_enqueue_style( 'materialize-style', get_template_directory_uri() . '/third-party/materialize/css/materialize.css' );
 	wp_enqueue_style( 'nmnews-style', get_stylesheet_uri() );
-
 	wp_enqueue_script( 'nmnews-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'nmnews-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'nmnews-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array( 'jquery' ), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	wp_enqueue_script( 'materialize-js', get_template_directory_uri() . '/third-party/materialize/js/materialize.js' , array( 'jquery' ), '', true );
+	wp_enqueue_script( 'nmnews-js', get_template_directory_uri() . '/js/nmnews-js.js', array( 'jquery', 'materialize-js' ), '', true );
 }
 add_action( 'wp_enqueue_scripts', 'nmnews_scripts' );
 

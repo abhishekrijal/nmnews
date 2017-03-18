@@ -1,8 +1,18 @@
+.site-header {
+	background-color: #fff;
+}
+
+.site-branding {
+	height: 80px;
+}
+
 .main-navigation {
 	clear: both;
 	display: block;
 	float: left;
 	width: 100%;
+	height: 65px;
+	background-color: #333;
 
 	ul {
 		display: none;
@@ -50,8 +60,10 @@
 	}
 
 	li {
-		float: left;
-		position: relative;
+		// float: left;
+		// position: relative;
+		display: inline-block;
+		width: auto;
 
 		&:hover > a,
 		&.focus > a {
@@ -61,6 +73,10 @@
 	a {
 		display: block;
 		text-decoration: none;
+		
+		padding : 10px 10px;
+		line-height: 45px;
+		color: #fff;
 	}
 
 	.current_page_item > a,
@@ -105,3 +121,27 @@
 		width: 50%;
 	}
 }
+
+.menu-primary-menu-container {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .menu-primary-menu-container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .menu-primary-menu-container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+	.menu-primary-menu-container {
+		width: 1170px;
+	}
+}
+

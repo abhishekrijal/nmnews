@@ -1,0 +1,13 @@
+@media only screen and (min-width:993px){
+    .container {
+        width: 100%;
+    }
+}
+
+.newsfeed .widget {
+    width: 50%;
+    display: inline-block;
+}
+.newsfeed .widget:first-child {
+    width: 100%;
+}

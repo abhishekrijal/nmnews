@@ -285,7 +285,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background: #000;
+  background: #f8f8f8;
   /* Fallback for when there is no custom background color defined. */ }
 
 blockquote, q {
@@ -427,11 +427,19 @@ a {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+.site-header {
+  background-color: #fff; }
+
+.site-branding {
+  height: 80px; }
+
 .main-navigation {
   clear: both;
   display: block;
   float: left;
-  width: 100%; }
+  width: 100%;
+  height: 65px;
+  background-color: #333; }
   .main-navigation ul {
     display: none;
     list-style: none;
@@ -455,11 +463,14 @@ a {
     .main-navigation ul li.focus > ul {
       left: auto; }
   .main-navigation li {
-    float: left;
-    position: relative; }
+    display: inline-block;
+    width: auto; }
   .main-navigation a {
     display: block;
-    text-decoration: none; }
+    text-decoration: none;
+    padding: 10px 10px;
+    line-height: 45px;
+    color: #fff; }
 
 /* Small menu. */
 .menu-toggle,
@@ -489,6 +500,21 @@ a {
   text-align: right;
   width: 50%; }
 
+.menu-primary-menu-container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+
+@media (min-width: 768px) {
+  .menu-primary-menu-container {
+    width: 750px; } }
+@media (min-width: 992px) {
+  .menu-primary-menu-container {
+    width: 970px; } }
+@media (min-width: 1200px) {
+  .menu-primary-menu-container {
+    width: 1170px; } }
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
@@ -692,5 +718,18 @@ object {
 
 .gallery-caption {
   display: block; }
+
+/*--------------------------------------------------------------
+# Basics
+--------------------------------------------------------------*/
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 100%; } }
+.newsfeed .widget {
+  width: 50%;
+  display: inline-block; }
+
+.newsfeed .widget:first-child {
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

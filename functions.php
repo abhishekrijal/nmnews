@@ -45,6 +45,7 @@ function nmnews_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'menu-1' => esc_html__( 'Primary', 'nmnews' ),
+		'social_menu' => esc_html__( 'Social Menu', 'nmnews' ),
 	) );
 
 	/*
@@ -64,6 +65,14 @@ function nmnews_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	/*
+	 * Enable support for custom logo.
+	*/
+		add_theme_support( 'custom-logo', array(
+			'flex-height' => true,
+			'flex-width'  => true,
+		) );
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
@@ -132,6 +141,15 @@ function nmnews_widgets_init() {
 		'after_title'   => '</span >',
 	) );
 
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Widget Area', 'nmnews' ),
+		'id'            => 'footer-widgets',
+		'description'   => esc_html__( 'Add widgets here to display in the footer area', 'nmnews' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 }
 add_action( 'widgets_init', 'nmnews_widgets_init' );
 
@@ -163,6 +181,11 @@ require get_template_directory() . '/inc/custom-header.php';
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/widgets/widgets-init.php';
 
 /**
  * Custom functions that act independently of the theme templates.

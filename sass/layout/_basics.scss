@@ -4,10 +4,74 @@
     }
 }
 
-.widget.Nmnews_News_Cat_Style_1 .card {
-    width: 50%;
-    float: left;
+.widget.Nmnews_News_Cat_Style_1 {
+    background-color: #fff;
+    display: table;
 }
-.widget.Nmnews_News_Cat_Style_1 .card:first-child {
-    width: 100%;
+
+
+.Nmnews_News_Cat_Style_1{
+    .news-card {
+        float: left;
+        width: 33.33%;
+    }
+    .news-card:first-child {
+        border-bottom: 1px solid #333;
+        width: 100%;
+        padding: 0;
+        .card-content p{
+            display: block;
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: 300;
+        }
+    }
+}
+
+.news-card {
+    position: relative;
+    margin: 0.5rem 0 1rem 0;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 0 15px;
+    .card-image {
+        position: relative;
+        img {
+            display: block;
+            border-radius: 2px 2px 0 0;
+            position: relative;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    }
+    .card-content{
+        padding: 15px;
+        border-radius: 0 0 2px 2px;
+        p {
+            display: none;
+        }
+        .card-title{
+            display: block;
+            line-height: inherit;
+            margin-bottom: 8px;
+        }
+    }
+    .card-title {
+        font-size: 1.2em;
+        font-weight: 700;
+    }
+}
+
+.collection .collection-item.avatar img {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    left: 15px;
+    display: inline-block;
+    vertical-align: middle;
 }

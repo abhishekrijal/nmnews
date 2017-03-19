@@ -27,7 +27,7 @@ get_header(); ?>
 						endif;
 						?>
 					</div>
-					<div class="col s12 m6 newsfeed">
+					<div class="col s12 m6">
 						<?php
 						if ( is_active_sidebar( 'home-newsfeed-sidebar' ) ) :
 							dynamic_sidebar( 'home-newsfeed-sidebar' );

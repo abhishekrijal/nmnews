@@ -133,8 +133,8 @@ function nmnews_widgets_init() {
 	// Homepage Left Sidebar.
 	register_sidebar( array(
 		'name'          => esc_html__( 'Home Left Sidebar', 'nmnews' ),
-		'id'            => 'home-Left-sidebar',
-		'description'   => esc_html__( 'Add widgets for Right Sidebar.', 'nmnews' ),
+		'id'            => 'home-left-sidebar',
+		'description'   => esc_html__( 'Add widgets for Left Sidebar.', 'nmnews' ),
 		'before_widget' => '<div id="%1$s" class="widget  %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<span class="widget-title card-title">',

@@ -31,22 +31,22 @@ if ( ! class_exists( 'Nmnews_Register_widgets' ) ) {
 		* @return [type] [Register All defined widgets]
 		*/
 
-		public function register_all_widgets(){
+		public function register_all_widgets() {
 
-			
-			register_widget('Nmnews_News_Cat_Style_1');
+			register_widget( 'Nmnews_News_Cat_Style_1' );
 
-			register_widget('Nmnews_News_Cat_Style_2');
+			register_widget( 'Nmnews_News_Cat_Style_2' );
 
-			register_widget('Nmnews_News_Quick_List');
+			register_widget( 'Nmnews_News_Quick_List' );
+
+			register_widget( 'Nmnews_Slider' );
 
 		}
 
 		/**
-		* [get_widgets Load widget Files]
-		* @return [type] [Load widget Files]
-		*/
-		public function get_widgets(){
+		 * [get_widgets Load widget Files]
+		 */
+		public function get_widgets() {
 
 			// News Category widget Style 1.
 			require get_template_directory() . '/inc/widgets/widget-news-cat-style-1.php';
@@ -56,6 +56,9 @@ if ( ! class_exists( 'Nmnews_Register_widgets' ) ) {
 
 			// News Quick List Widget File.
 			require 'widget-news-quick-list.php';
+
+			// Simple News Slider.
+			require 'widget-nmnews-slider.php';
 		}
 
 

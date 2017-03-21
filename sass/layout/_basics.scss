@@ -5,73 +5,156 @@
 }
 
 .widget.Nmnews_News_Cat_Style_1 {
-    background-color: #fff;
+    //background-color: #fff;
     display: table;
 }
 
-
-.Nmnews_News_Cat_Style_1{
-    .news-card {
-        float: left;
-        width: 33.33%;
-    }
-    .news-card:first-child {
-        border-bottom: 1px solid #333;
-        width: 100%;
-        padding: 0;
-        .card-content p{
-            display: block;
-        }
+.card {
+    font-family: Roboto;
+    .card-content {
         .card-title {
-            font-size: 24px;
-            font-weight: 300;
+            margin-bottom: 2px;
         }
     }
 }
 
-.news-card {
+.leader-post {
     position: relative;
-    margin: 0.5rem 0 1rem 0;
-    background-color: #fff;
-    border-radius: 2px;
-    padding: 0 15px;
-    .card-image {
-        position: relative;
-        img {
-            display: block;
-            border-radius: 2px 2px 0 0;
-            position: relative;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 100%;
+    .card {
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+        .card-content {
+            border-radius: 0;
+            .card-title {
+                font-size: 20px;
+                font-weight: normal;
+            }
         }
     }
-    .card-content{
-        padding: 15px;
-        border-radius: 0 0 2px 2px;
+    .card-image {
+        height : 205px;
+        overflow: hidden;
+        img {
+            height: 205px;
+        }
+    }
+    .posted-date a,
+    .posted-date a i {
+        font-size: 12px;
+    }
+    .card-content {
+        padding: 15px 15px 5px;
         p {
-            display: none;
+            font-size: 13px;
         }
-        .card-title{
-            display: block;
-            line-height: inherit;
-            margin-bottom: 8px;
+    }
+}
+.leader-post:after {
+    content : '';
+    height: 1px;
+    width: calc(100% - 30px);
+    background: #e2e2e2;
+    position: absolute;
+    bottom: 0;
+    margin: 0 15px;
+}
+
+.minion-posts {
+    background-color: #fff;
+    padding : 5px 15px;
+    .card {
+        box-shadow: none;
+        height: 90px;
+        margin-bottom: 10px;
+        .card-content {
+            .card-title {
+                line-height: 1.2;
+            }
         }
+    }
+    .card-image {
+        position: absolute;
+        top: 0;
+        height : 90px;
+        width: 130px;
+        overflow: hidden;
+        img {
+            height: 90px;
+        }
+    }
+    .card-content {
+        margin-left: 140px;
+        padding: 0;
     }
     .card-title {
-        font-size: 1.2em;
-        font-weight: 700;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: Roboto;
+    }
+    .posted-date a,
+    .posted-date a i {
+        font-size: 11px;
     }
 }
 
-.collection .collection-item.avatar img {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    left: 15px;
-    display: inline-block;
-    vertical-align: middle;
+.Nmnews_News_Quick_List {
+    .collection {
+        .collection-header h3 {
+            font-size : 24px;
+        }
+        .title {
+            margin : 0 0 2px;
+            font-size: 14px;
+        }
+        .collection-item.avatar {
+            padding-left: 121px;
+            min-height: 110px;
+            img {
+                position: absolute;
+                width: 100px;
+                height: 90px;
+                overflow: hidden;
+                left: 15px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
+    .posted-date {
+        font-size: 11px;
+    }
 }
+
+
+@media screen and (min-width: 568px) {
+    .Nmnews_News_Cat_Style_2 .minion-posts {
+        padding: 5px 0;
+        .card {
+            width: calc(33.33% - 25px);
+            height: auto;
+            float: left;
+            margin: 0 15px 0 10px;
+            box-sizing: border-box;
+        }
+        .card-image {
+            position: relative;
+            width: 100%;
+            img {
+                width: 100%;
+            }
+            margin-bottom: 10px;
+        }
+        .card-content {
+            margin: 0;
+        }
+        &:after{
+            content: "."; 
+            visibility: hidden; 
+            display: block; 
+            height: 0; 
+            clear: both;
+        }
+    }
+}
+

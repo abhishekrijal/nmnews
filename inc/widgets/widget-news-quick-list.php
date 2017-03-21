@@ -69,7 +69,19 @@ if ( ! class_exists( 'Nmnews_News_Quick_List' ) ) :
 			?>
 			<li class="collection-item avatar">
 				<?php the_post_thumbnail(); ?>
-				<span class="title"><?php the_title(); ?></span>
+				<h2 class="title"><?php the_title(); ?></h2>
+				<?php
+					$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
+					$time_string = sprintf( $time_string,
+						esc_attr( get_the_date( 'c' ) ),
+						esc_html( get_the_date() )
+					);
+					printf( __( '<span class="posted-date"><a href="%1$s" title="%2$s" rel="bookmark"><i class="material-icons">date_range</i> %3$s</a></span>', 'nmnews' ),
+						esc_url( get_permalink() ),
+						esc_attr( get_the_time() ),
+						$time_string
+					);
+				?>
 			</li>
 			<?php endwhile; wp_reset_postdata(); ?>
 			<?php echo '</ul>' . $after_widget;

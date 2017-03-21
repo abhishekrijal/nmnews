@@ -8,75 +8,75 @@
  */
 
 if ( ! function_exists( 'nmnews_setup' ) ) :
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- */
-function nmnews_setup() {
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on Namaskar News, use a find and replace
-	 * to change 'nmnews' to the name of your theme in all the template files.
-	 */
-	load_theme_textdomain( 'nmnews', get_template_directory() . '/languages' );
-
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
-	 */
-	add_theme_support( 'title-tag' );
-
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
-	 *
-	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-	 */
-	add_theme_support( 'post-thumbnails' );
-
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'nmnews' ),
-		'social_menu' => esc_html__( 'Social Menu', 'nmnews' ),
-	) );
-
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
-	add_theme_support( 'html5', array(
-		'search-form',
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption',
-	) );
-
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'nmnews_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
-
-	/*
-	 * Enable support for custom logo.
+	/**
+	* Sets up theme defaults and registers support for various WordPress features.
+	*
+	* Note that this function is hooked into the after_setup_theme hook, which
+	* runs before the init hook. The init hook is too late for some features, such
+	* as indicating support for post thumbnails.
 	*/
-		add_theme_support( 'custom-logo', array(
-			'flex-height' => true,
-			'flex-width'  => true,
+	function nmnews_setup() {
+		/*
+		* Make theme available for translation.
+		* Translations can be filed in the /languages/ directory.
+		* If you're building a theme based on Namaskar News, use a find and replace
+		* to change 'nmnews' to the name of your theme in all the template files.
+		*/
+		load_theme_textdomain( 'nmnews', get_template_directory() . '/languages' );
+
+		// Add default posts and comments RSS feed links to head.
+		add_theme_support( 'automatic-feed-links' );
+
+		/*
+		* Let WordPress manage the document title.
+		* By adding theme support, we declare that this theme does not use a
+		* hard-coded <title> tag in the document head, and expect WordPress to
+		* provide it for us.
+		*/
+		add_theme_support( 'title-tag' );
+
+		/*
+		* Enable support for Post Thumbnails on posts and pages.
+		*
+		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+		*/
+		add_theme_support( 'post-thumbnails' );
+
+		// This theme uses wp_nav_menu() in one location.
+		register_nav_menus( array(
+			'menu-1' => esc_html__( 'Primary', 'nmnews' ),
+			'social_menu' => esc_html__( 'Social Menu', 'nmnews' ),
 		) );
 
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
-}
+		/*
+		* Switch default core markup for search form, comment form, and comments
+		* to output valid HTML5.
+		*/
+		add_theme_support( 'html5', array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+		) );
+
+		// Set up the WordPress core custom background feature.
+		add_theme_support( 'custom-background', apply_filters( 'nmnews_custom_background_args', array(
+			'default-color' => 'ffffff',
+			'default-image' => '',
+		) ) );
+
+		/*
+		* Enable support for custom logo.
+		*/
+			add_theme_support( 'custom-logo', array(
+				'flex-height' => true,
+				'flex-width'  => true,
+			) );
+
+		// Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
+	}
 endif;
 add_action( 'after_setup_theme', 'nmnews_setup' );
 
@@ -159,8 +159,12 @@ add_action( 'widgets_init', 'nmnews_widgets_init' );
 function nmnews_scripts() {
 	wp_enqueue_style( 'materialize-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons' );
 	wp_enqueue_style( 'materialize-style', get_template_directory_uri() . '/third-party/materialize/css/materialize.css' );
+	wp_enqueue_style( 'owl-carousel-style', get_template_directory_uri() . '/third-party/owl-carousel/dist/assets/owl.carousel.css' );
+	wp_enqueue_style( 'owl-carousel-theme-style', get_template_directory_uri() . '/third-party/owl-carousel/dist/assets/owl.theme.default.css' );
 	wp_enqueue_style( 'nmnews-style', get_stylesheet_uri() );
+
 	wp_enqueue_script( 'nmnews-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'owl-carousel-js', get_template_directory_uri() . '/third-party/owl-carousel/dist/owl.carousel.js', array( 'jquery' ), '', true );
 
 	wp_enqueue_script( 'nmnews-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array( 'jquery' ), '20151215', true );
 

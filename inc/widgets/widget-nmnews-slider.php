@@ -1,12 +1,12 @@
 <?php
-if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
+if ( ! class_exists( 'Nmnews_Slider' ) ) :
 
 	/**
-	 * Social widget Class.
+	 * News Quick List
 	 *
 	 * @since 1.0.0
 	 */
-	class Nmnews_News_Cat_Style_1 extends WP_Widget {
+	class Nmnews_Slider extends WP_Widget {
 
 		/**
 		 * Constructor.
@@ -15,11 +15,11 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
 		 */
 		function __construct() {
 			$opts = array(
-				'classname'                   => 'Nmnews_News_Cat_Style_1',
-				'description'                 => esc_html__( 'News Listing Style 1', 'nmnews' ),
+				'classname'                   => 'Nmnews_Slider',
+				'description'                 => esc_html__( 'Simple Slider Widget', 'nmnews' ),
 				'customize_selective_refresh' => true,
 			);
-			parent::__construct( 'nmnews-news-cat-1', esc_html__( 'News Listing Style 1', 'nmnews' ), $opts );
+			parent::__construct( 'nmnews-slider', esc_html__( 'Nmnews Simple Slider', 'nmnews' ), $opts );
 		}
 
 		/**
@@ -41,14 +41,13 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
 			$type = isset( $instance[ 'type' ] ) ? $instance[ 'type' ] : 'latest' ;
 			$category = isset( $instance[ 'category' ] ) ? $instance[ 'category' ] : '';
 
-			if ( $type == 'latest' ) {
+			if( $type == 'latest' ) {
 				 $get_featured_posts = new WP_Query( array(
 						'posts_per_page'        => $number,
 						'post_type'             => 'post',
 						'ignore_sticky_posts'   => true
 				 ) );
-			}
-			else {
+			} else {
 				 $get_featured_posts = new WP_Query( array(
 						'posts_per_page'        => $number,
 						'post_type'             => 'post',
@@ -58,63 +57,14 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
 			echo $before_widget;
 			?>
 			<?php
-			$i = 1; 
-			while ( $get_featured_posts->have_posts() ) :
-				$get_featured_posts->the_post();
-				if ( $i == 1 ) {
-					echo '<div class="leader-post">';
-				}elseif( $i == 2 ) {
-					echo '<div class="minion-posts">';
-				} 
-				// Image Size
-				if( $i == 1 ) { 
-					$featured = array( 300, 205 );
-				} else { 
-					$featured = array( 130, 90 );
-				}
+            echo '<div class="owl-carousel owl-theme">';
+            for( $i=0; $i<=4; $i++ ){
+                echo '<a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/' . $i . '"></a>';
+            }
 			?>
-			<div class="card">
-				<?php
-                  if( has_post_thumbnail() ) {
-                     $image = '';
-                     $title_attribute = get_the_title( $post->ID );
-                     $image .= '<div class="card-image">';
-                     $image .= '<a href="' . get_permalink() . '" title="'.the_title( '', '', false ).'">';
-                     $image .= get_the_post_thumbnail( $post->ID, $featured, array( 'title' => esc_attr( $title_attribute ), 'alt' => esc_attr( $title_attribute ) ) ).'</a>';
-                     $image .= '</div>';
-                     echo $image;
-                  }
-                  ?>
-				<div class="card-content">
-					<span class="card-title"><?php the_title(); ?></span>
-					<?php
-                        $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
-                        $time_string = sprintf( $time_string,
-                           esc_attr( get_the_date( 'c' ) ),
-                           esc_html( get_the_date() )
-                        );
-                        printf( __( '<span class="posted-date"><a href="%1$s" title="%2$s" rel="bookmark"><i class="material-icons">date_range</i> %3$s</a></span>', 'nmnews' ),
-                           esc_url( get_permalink() ),
-                           esc_attr( get_the_time() ),
-                           $time_string
-                        );
-                     ?>
-					<?php if ( $i == 1 ) { ?>
-						<p><?php the_excerpt(); ?></p>
-					<?php } ?>
-				</div>
-			</div>
-			<?php
-			if ( $i == 1 ) {
-				 echo '</div>';
-			};
-			$i++;
-			endwhile;
-			wp_reset_postdata();
-			if ( $i > 2 ) {
-				echo '</div>';
-			}
-			echo $after_widget;
+			<?php echo '</div>' . $after_widget;
+
+
 		}
 
 		/**
@@ -133,7 +83,7 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
 			$instance[ 'number' ] = absint( $new_instance[ 'number' ] );
 			$instance[ 'type' ] = $new_instance[ 'type' ];
 			$instance[ 'category' ] = $new_instance[ 'category' ];
-
+			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 			return $instance;
 			
 
@@ -155,7 +105,14 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
 		$number = $instance['number'];
 		$type = $instance['type'];
 		$category = $instance['category'];
+
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Widget Title', 'nmnews' );
 		?>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'nmnews' ); ?></label> 
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		
 		<p>
 			<label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number of posts to display:', 'nmnews' ); ?></label>
 			<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" />

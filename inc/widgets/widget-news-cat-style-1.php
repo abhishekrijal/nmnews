@@ -64,7 +64,7 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
 				if ( $i == 1 ) {
 					echo '<div class="leader-post">';
 				}elseif( $i == 2 ) {
-					echo '<div class="minion-posts">';
+					echo '<div class="minion-posts mCustomScrollbar" data-mcs-theme="dark">';
 				} 
 				// Image Size
 				if( $i == 1 ) { 
@@ -86,7 +86,13 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
                   }
                   ?>
 				<div class="card-content">
-					<span class="card-title"><?php the_title(); ?></span>
+					<?php if ( $i == 1 ){
+							echo '<span class="topic">';
+								the_category();
+							echo '</span>';
+						}
+					?>
+					<h3 class="card-title"><?php the_title(); ?></h3>
 					<?php
                         $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
                         $time_string = sprintf( $time_string,

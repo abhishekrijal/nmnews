@@ -231,7 +231,9 @@ textarea {
   line-height: 1.5; }
 
 h1, h2, h3, h4, h5, h6 {
-  clear: both; }
+  clear: both;
+  font-family: Roboto;
+  text-transform: uppercase; }
 
 p {
   margin-bottom: 1.5em; }
@@ -722,16 +724,19 @@ object {
 /*--------------------------------------------------------------
 # Basics
 --------------------------------------------------------------*/
-@media only screen and (min-width: 993px) {
-  .container {
-    width: 100%; } }
+.container {
+  width: 100%; }
+
 .widget.Nmnews_News_Cat_Style_1 {
   display: table; }
 
 .card {
-  font-family: Roboto; }
-  .card .card-content .card-title {
-    margin-bottom: 2px; }
+  font-family: Roboto;
+  padding: 15px 15px 5px; }
+  .card .card-content {
+    padding: 10px 0; }
+    .card .card-content .card-title {
+      margin-bottom: 2px; }
 
 .leader-post {
   position: relative; }
@@ -752,10 +757,8 @@ object {
   .leader-post .posted-date a,
   .leader-post .posted-date a i {
     font-size: 12px; }
-  .leader-post .card-content {
-    padding: 15px 15px 5px; }
-    .leader-post .card-content p {
-      font-size: 13px; }
+  .leader-post .card-content p {
+    font-size: 13px; }
 
 .leader-post:after {
   content: '';
@@ -794,13 +797,10 @@ object {
   .minion-posts .posted-date a i {
     font-size: 11px; }
 
-.Nmnews_News_Quick_List .collection .collection-header h3 {
-  font-size: 24px; }
 .Nmnews_News_Quick_List .collection .title {
   margin: 0 0 2px;
   font-size: 14px; }
 .Nmnews_News_Quick_List .collection .collection-item.avatar {
-  padding-left: 121px;
   min-height: 110px; }
   .Nmnews_News_Quick_List .collection .collection-item.avatar img {
     position: absolute;
@@ -836,5 +836,49 @@ object {
       display: block;
       height: 0;
       clear: both; } }
+.topic {
+  text-transform: uppercase;
+  text-decoration: underline; }
+
+.collection {
+  border: none; }
+  .collection.with-header h3 {
+    margin: 0;
+    font-weight: 300;
+    font-size: 18px; }
+  .collection.with-header .collection-header {
+    background-color: transparent; }
+    .collection.with-header .collection-header .btn {
+      height: 28px;
+      line-height: 28px; }
+    .collection.with-header .collection-header a {
+      font-family: Roboto;
+      position: absolute;
+      right: 0;
+      top: 5px;
+      right: 20px;
+      text-transform: capitalize; }
+  .collection.with-header .collection-item.avatar {
+    padding: 15px; }
+  .collection .collection-item.avatar .header {
+    height: 90px; }
+  .collection .collection-item.avatar .main-content {
+    display: none;
+    margin-top: 8px; }
+  .collection .collection-item.avatar .secondary-content {
+    top: unset;
+    bottom: 0;
+    font-size: 14px; }
+  .collection .collection-item.avatar .title, .collection .collection-item.avatar .posted-date {
+    margin-left: 115px; }
+  .collection .collection-item.avatar .title {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: bold; }
+  .collection .collection-item.avatar .posted-date, .collection .collection-item.avatar .posted-date i {
+    font-size: 10px; }
+
+.minion-posts.mCustomScrollbar {
+  max-height: 318px; }
 
 /*# sourceMappingURL=style.css.map */

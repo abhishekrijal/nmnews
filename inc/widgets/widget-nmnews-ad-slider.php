@@ -1,12 +1,12 @@
 <?php
-if ( ! class_exists( 'Nmnews_Slider' ) ) :
+if ( ! class_exists( 'Nmnews_Ad_Slider' ) ) :
 
 	/**
 	 * News Quick List
 	 *
 	 * @since 1.0.0
 	 */
-	class Nmnews_Slider extends WP_Widget {
+	class Nmnews_Ad_Slider extends WP_Widget {
 
 		/**
 		 * Constructor.
@@ -15,11 +15,11 @@ if ( ! class_exists( 'Nmnews_Slider' ) ) :
 		 */
 		function __construct() {
 			$opts = array(
-				'classname'                   => 'Nmnews_Slider',
+				'classname'                   => 'Nmnews_Ad_Slider',
 				'description'                 => esc_html__( 'Simple Slider Widget', 'nmnews' ),
 				'customize_selective_refresh' => true,
 			);
-			parent::__construct( 'nmnews-slider', esc_html__( 'Nmnews Simple Slider', 'nmnews' ), $opts );
+			parent::__construct( 'nmnews-ad-slider', esc_html__( 'Nmnews Simple Ad Slider', 'nmnews' ), $opts );
 		}
 
 		/**

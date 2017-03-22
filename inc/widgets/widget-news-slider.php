@@ -1,12 +1,12 @@
 <?php
-if ( ! class_exists( 'Nmnews_News_Quick_List' ) ) :
+if ( ! class_exists( 'Nmnews_News_Slider' ) ) :
 
 	/**
 	 * News Quick List
 	 *
 	 * @since 1.0.0
 	 */
-	class Nmnews_News_Quick_List extends WP_Widget {
+	class Nmnews_News_Slider extends WP_Widget {
 
 		/**
 		 * Constructor.
@@ -15,11 +15,11 @@ if ( ! class_exists( 'Nmnews_News_Quick_List' ) ) :
 		 */
 		function __construct() {
 			$opts = array(
-				'classname'                   => 'Nmnews_News_Quick_List',
-				'description'                 => esc_html__( 'Quick News List', 'nmnews' ),
+				'classname'                   => 'Nmnews_News_Slider',
+				'description'                 => esc_html__( 'News Slider Widget', 'nmnews' ),
 				'customize_selective_refresh' => true,
 			);
-			parent::__construct( 'nmnews-news-quick-list', esc_html__( 'News Quick List', 'nmnews' ), $opts );
+			parent::__construct( 'nmnews-news-slider', esc_html__( 'Nmnews News Slider', 'nmnews' ), $opts );
 		}
 
 		/**
@@ -57,43 +57,18 @@ if ( ! class_exists( 'Nmnews_News_Quick_List' ) ) :
 			echo $before_widget;
 			?>
 			<?php
-			if ( ! empty( $instance['title'] ) ) {
-				echo '<ul class="collection with-header">';
-				echo '<li class="collection-header">';
-				echo '<h3>' . apply_filters( 'widget_title', $instance['title'] ) . '</h3>';
-				echo '<a href="#!" class="waves-effect waves-light btn">View all</a>';
-				echo '</li>';
-			}else{
-				echo '<ul class="collection">';
+			echo '<div class="owl-carousel owl-theme">';
+			for( $i=0; $i<=4; $i++ ){ ?>
+				<div class="card">
+					<div class="card-image">
+						<img src="http://lorempixel.com/800/400/food/<?php echo $i; ?>">
+						<span class="card-title">Card Title</span>
+					</div>
+				</div>
+			<?php
 			}
-			while ( $get_featured_posts->have_posts() ) : $get_featured_posts->the_post();
 			?>
-			<li class="collection-item avatar">
-				<?php the_post_thumbnail(); ?>
-				<div class="header">
-					<h2 class="title"><?php the_title(); ?></h2>
-					<?php
-						$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
-						$time_string = sprintf( $time_string,
-							esc_attr( get_the_date( 'c' ) ),
-							esc_html( get_the_date() )
-						);
-						printf( __( '<span class="posted-date"><a href="%1$s" title="%2$s" rel="bookmark"><i class="material-icons">date_range</i> %3$s</a></span>', 'nmnews' ),
-							esc_url( get_permalink() ),
-							esc_attr( get_the_time() ),
-							$time_string
-						);
-					?>
-				</div>
-				<div class="main-content">
-					<?php the_content(); ?>
-				</div>
-				<a href="#!" class="secondary-content vm"><i class="material-icons">expand_more</i></a>
-			</li>
-			<?php endwhile; wp_reset_postdata(); ?>
-			<?php echo '</ul>' . $after_widget;
-
-
+			<?php echo '</div>' . $after_widget;
 		}
 
 		/**
@@ -114,8 +89,6 @@ if ( ! class_exists( 'Nmnews_News_Quick_List' ) ) :
 			$instance[ 'category' ] = $new_instance[ 'category' ];
 			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 			return $instance;
-			
-
 		}
 
 		/**

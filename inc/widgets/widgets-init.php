@@ -39,8 +39,8 @@ if ( ! class_exists( 'Nmnews_Register_widgets' ) ) {
 
 			register_widget( 'Nmnews_News_Quick_List' );
 
-			register_widget( 'Nmnews_Slider' );
-
+			register_widget( 'Nmnews_Ad_Slider' );
+			register_widget( 'Nmnews_News_Slider' );
 		}
 
 		/**
@@ -58,7 +58,9 @@ if ( ! class_exists( 'Nmnews_Register_widgets' ) ) {
 			require 'widget-news-quick-list.php';
 
 			// Simple News Slider.
-			require 'widget-nmnews-slider.php';
+			require 'widget-nmnews-ad-slider.php';
+
+			require 'widget-news-slider.php';
 		}
 
 

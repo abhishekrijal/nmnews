@@ -1,8 +1,8 @@
-@media only screen and (min-width:993px){
-    .container {
-        width: 100%;
-    }
+.container {
+    width: 100%;
 }
+
+
 
 .widget.Nmnews_News_Cat_Style_1 {
     //background-color: #fff;
@@ -11,7 +11,9 @@
 
 .card {
     font-family: Roboto;
+    padding: 15px 15px 5px;
     .card-content {
+        padding : 10px 0;
         .card-title {
             margin-bottom: 2px;
         }
@@ -44,7 +46,6 @@
         font-size: 12px;
     }
     .card-content {
-        padding: 15px 15px 5px;
         p {
             font-size: 13px;
         }
@@ -100,15 +101,11 @@
 
 .Nmnews_News_Quick_List {
     .collection {
-        .collection-header h3 {
-            font-size : 24px;
-        }
         .title {
             margin : 0 0 2px;
             font-size: 14px;
         }
         .collection-item.avatar {
-            padding-left: 121px;
             min-height: 110px;
             img {
                 position: absolute;
@@ -158,3 +155,69 @@
     }
 }
 
+.topic {
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+
+//New Setting
+.collection {
+    border: none;
+    &.with-header {
+        h3{
+            margin: 0;
+            font-weight: 300;
+            font-size: 18px;
+        }
+        .collection-header {
+            background-color: transparent;
+            .btn {
+                height : 28px;
+                line-height: 28px;
+            }
+            a {
+                font-family: Roboto;
+                position : absolute;
+                right:0;
+                top: 5px;
+                right: 20px;
+                text-transform: capitalize;
+            }
+        }
+        .collection-item {
+            &.avatar {
+                padding: 15px;
+            }
+        }
+    }
+    .collection-item.avatar {
+        .header {
+            height: 90px;
+        }
+        .main-content {
+            display: none;
+            margin-top: 8px;
+        }
+        .secondary-content {
+            top : unset;
+            bottom: 0;
+            font-size: 14px;
+        }
+        .title, .posted-date {
+            margin-left: 115px;
+        }
+        .title {
+            font-size: 14px;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+        .posted-date, .posted-date i {
+            font-size: 10px;
+        }
+    }
+}
+
+.minion-posts.mCustomScrollbar {
+    max-height: 318px;
+}

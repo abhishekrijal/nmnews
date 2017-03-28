@@ -15,7 +15,7 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
 		 */
 		function __construct() {
 			$opts = array(
-				'classname'                   => 'Nmnews_News_Cat_Style_1',
+				'classname'                   => 'Nmnews_News_Cat_Style_1 group',
 				'description'                 => esc_html__( 'News Listing Style 1', 'nmnews' ),
 				'customize_selective_refresh' => true,
 			);
@@ -56,15 +56,16 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
 				 ) );
 			}
 			echo $before_widget;
+			echo '<h4 class="block-title"><span>राजनीति</span></h4>';
 			?>
 			<?php
 			$i = 1; 
 			while ( $get_featured_posts->have_posts() ) :
 				$get_featured_posts->the_post();
 				if ( $i == 1 ) {
-					echo '<div class="leader-post">';
+					echo '<div class="leader-post group">';
 				}elseif( $i == 2 ) {
-					echo '<div class="minion-posts mCustomScrollbar" data-mcs-theme="dark">';
+					echo '<div class="minion-posts group">';
 				} 
 				// Image Size
 				if( $i == 1 ) { 
@@ -75,23 +76,18 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
 			?>
 			<div class="card">
 				<?php
-                  if( has_post_thumbnail() ) {
-                     $image = '';
-                     $title_attribute = get_the_title( $post->ID );
-                     $image .= '<div class="card-image">';
-                     $image .= '<a href="' . get_permalink() . '" title="'.the_title( '', '', false ).'">';
-                     $image .= get_the_post_thumbnail( $post->ID, $featured, array( 'title' => esc_attr( $title_attribute ), 'alt' => esc_attr( $title_attribute ) ) ).'</a>';
-                     $image .= '</div>';
-                     echo $image;
-                  }
+				if( has_post_thumbnail() ) {
+					$image = '';
+					$title_attribute = get_the_title( $post->ID );
+					$image .= '<div class="card-image">';
+					$image .= '<a href="' . get_permalink() . '" title="'.the_title( '', '', false ).'">';
+				//  $image .= get_the_post_thumbnail( $post->ID, $featured, array( 'title' => esc_attr( $title_attribute ), 'alt' => esc_attr( $title_attribute ) ) ).'</a>';
+					$image .= '<img src="https://unsplash.it/200/300?random=' . $i . '">';
+					$image .= '</div>';
+					echo $image;
+				}
                   ?>
 				<div class="card-content">
-					<?php if ( $i == 1 ){
-							echo '<span class="topic">';
-								the_category();
-							echo '</span>';
-						}
-					?>
 					<h3 class="card-title"><?php the_title(); ?></h3>
 					<?php
                         $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
@@ -99,7 +95,7 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_1' ) ) :
                            esc_attr( get_the_date( 'c' ) ),
                            esc_html( get_the_date() )
                         );
-                        printf( __( '<span class="posted-date"><a href="%1$s" title="%2$s" rel="bookmark"><i class="material-icons">date_range</i> %3$s</a></span>', 'nmnews' ),
+                        printf( __( '<span class="posted-date"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span>', 'nmnews' ),
                            esc_url( get_permalink() ),
                            esc_attr( get_the_time() ),
                            $time_string

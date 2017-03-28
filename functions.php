@@ -178,6 +178,11 @@ function nmnews_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'nmnews_scripts' );
 
+function custom_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
 /**
  * Implement the Custom Header feature.
  */
@@ -207,3 +212,6 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+require get_template_directory() . '/inc/nmnews-custom-functions.php';
+

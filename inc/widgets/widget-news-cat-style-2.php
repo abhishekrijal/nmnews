@@ -15,7 +15,7 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_2' ) ) :
 		 */
 		function __construct() {
 			$opts = array(
-				'classname'                   => 'Nmnews_News_Cat_Style_2',
+				'classname'                   => 'Nmnews_News_Cat_Style_2 group',
 				'description'                 => esc_html__( 'News Listing Style 2', 'nmnews' ),
 				'customize_selective_refresh' => true,
 			);
@@ -62,8 +62,8 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_2' ) ) :
 			while ( $get_featured_posts->have_posts() ) :
 				$get_featured_posts->the_post();
 				if ( $i == 1 ) {
-					echo '<div class="leader-post">';
-				}elseif( $i == 2 ) {
+					echo '<div class="leader-post multi">';
+				}elseif( $i == 3 ) {
 					echo '<div class="minion-posts">';
 				} 
 				// Image Size
@@ -75,16 +75,17 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_2' ) ) :
 			?>
 			<div class="card">
 				<?php
-									if( has_post_thumbnail() ) {
-										 $image = '';
-										 $title_attribute = get_the_title( $post->ID );
-										 $image .= '<div class="card-image">';
-										 $image .= '<a href="' . get_permalink() . '" title="'.the_title( '', '', false ).'">';
-										 $image .= get_the_post_thumbnail( $post->ID, $featured, array( 'title' => esc_attr( $title_attribute ), 'alt' => esc_attr( $title_attribute ) ) ).'</a>';
-										 $image .= '</div>';
-										 echo $image;
-									}
-									?>
+				if( has_post_thumbnail() ) {
+						$image = '';
+						$title_attribute = get_the_title( $post->ID );
+						$image .= '<div class="card-image">';
+						$image .= '<a href="' . get_permalink() . '" title="'.the_title( '', '', false ).'">';
+						//$image .= get_the_post_thumbnail( $post->ID, $featured, array( 'title' => esc_attr( $title_attribute ), 'alt' => esc_attr( $title_attribute ) ) ).'</a>';
+						$image .= '<img src="https://unsplash.it/200/300?random=' . $i . '">';
+						$image .= '</div>';
+						echo $image;
+				}
+				?>
 				<div class="card-content">
 					<span class="card-title"><?php the_title(); ?></span>
 					<?php
@@ -93,25 +94,25 @@ if ( ! class_exists( 'Nmnews_News_Cat_Style_2' ) ) :
 								esc_attr( get_the_date( 'c' ) ),
 								esc_html( get_the_date() )
 						);
-						printf( __( '<span class="posted-date"><a href="%1$s" title="%2$s" rel="bookmark"><i class="material-icons">date_range</i> %3$s</a></span>', 'nmnews' ),
+						printf( __( '<span class="posted-date"><a href="%1$s" title="%2$s" rel="bookmark">%3$s</a></span>', 'nmnews' ),
 								esc_url( get_permalink() ),
 								esc_attr( get_the_time() ),
 								$time_string
 						);
 										 ?>
 					<?php if ( $i == 1 ) { ?>
-						<p><?php the_excerpt(); ?></p>
+						<!--<p><?php the_excerpt(); ?></p>-->
 					<?php } ?>
 				</div>
 			</div>
 			<?php
-			if ( $i == 1 ) {
+			if ( $i == 2 ) {
 				 echo '</div>';
 			};
 			$i++;
 			endwhile;
 			wp_reset_postdata();
-			if ( $i > 2 ) {
+			if ( $i > 3 ) {
 				echo '</div>';
 			}
 			echo $after_widget;

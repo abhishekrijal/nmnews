@@ -79,7 +79,11 @@ if ( post_password_required() ) {
 	<?php
 	endif;
 
-	comment_form();
+	$args = array(
+		'class_submit' => 'btn waves-effect',
+	);
+
+	comment_form( $args );
 	?>
 
 </div><!-- #comments -->

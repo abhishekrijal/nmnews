@@ -235,6 +235,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Roboto;
   text-transform: uppercase; }
 
+h2.entry-title {
+  font-size: 1.5em;
+  margin: 0; }
+
 p {
   margin-bottom: 1.5em; }
 
@@ -287,7 +291,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background: #f8f8f8;
+  background: #fff;
   /* Fallback for when there is no custom background color defined. */ }
 
 blockquote, q {
@@ -324,7 +328,7 @@ dd {
 img {
   height: auto;
   /* Make sure images are scaled correctly. */
-  max-width: 100%;
+  width: 100%;
   /* Adhere to container width. */ }
 
 figure {
@@ -364,6 +368,9 @@ input[type="submit"] {
   input[type="submit"]:active,
   input[type="submit"]:focus {
     border-color: #aaa #bbb #bbb; }
+
+.comment-form .btn {
+  background-color: #fff; }
 
 input[type="text"],
 input[type="email"],
@@ -416,7 +423,7 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: royalblue; }
+  color: #333; }
   a:visited {
     color: purple; }
   a:hover, a:focus, a:active {
@@ -430,7 +437,7 @@ a {
 ## Menus
 --------------------------------------------------------------*/
 .site-header {
-  background-color: #fff; }
+  background-color: #fafafa; }
 
 .site-branding {
   height: 80px; }
@@ -485,10 +492,35 @@ a {
 
   .main-navigation ul {
     display: block; } }
+nav {
+  background-color: #000; }
+
+@media screen only and (min-width: 992px) {
+  nav {
+    background-color: transparent; } }
+.navbar.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999; }
+  .navbar.fixed nav {
+    background-color: #000; }
+
+.navigation {
+  background-color: #000;
+  margin-top: -4px; }
+  .navigation:before {
+    content: '';
+    height: 4px;
+    width: 100%;
+    background-color: #4fc3f7;
+    display: block; }
+
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
-  margin: 0 0 1.5em;
+  margin-bottom: .5em;
   overflow: hidden; }
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
@@ -516,7 +548,7 @@ a {
     width: 970px; } }
 @media (min-width: 1200px) {
   .menu-primary-menu-container {
-    width: 1170px; } }
+    min-height: 64px; } }
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
@@ -601,7 +633,7 @@ a {
 # Widgets
 --------------------------------------------------------------*/
 .widget {
-  margin: 0 0 1.5em;
+  margin: 0;
   /* Make sure select elements fit in widgets. */ }
   .widget select {
     max-width: 100%; }
@@ -616,7 +648,7 @@ a {
   display: block; }
 
 .hentry {
-  margin: 0 0 1.5em; }
+  margin: 0 0 .5em; }
 
 .byline,
 .updated:not(.published) {
@@ -726,24 +758,131 @@ object {
 --------------------------------------------------------------*/
 .container {
   width: 100%; }
+  .container .row {
+    margin-left: 0;
+    margin-right: 0; }
+  .container .col {
+    border: 1px solid #dcdcdc; }
 
-.widget.Nmnews_News_Cat_Style_1 {
-  display: table; }
+.nav-wrapper {
+  width: 100%;
+  margin: 0 auto; }
+
+.card {
+  box-shadow: none; }
+
+@media only screen and (min-width: 767px) {
+  .container {
+    width: 90%; }
+
+  .nav-wrapper {
+    width: 90%; } }
+.brand {
+  padding: 10px 0; }
+  .brand:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0; }
+
+.brand-logo {
+  display: block;
+  float: left; }
+  .brand-logo img {
+    max-height: 90px;
+    width: auto; }
+
+.navbar.fixed {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
+
+nav {
+  background-color: transparent;
+  height: 68px;
+  max-height: 80px;
+  box-shadow: none; }
+  nav ul a:hover, nav ul a:visited, nav ul a:active {
+    background-color: #fff; }
+
+.nav-wrapper {
+  background-color: #000; }
+
+.block-title {
+  margin: 0;
+  margin-left: 15px; }
+  .block-title > span {
+    font-family: 'Open Sans',arial,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #222;
+    border-radius: 3px;
+    padding: 2px 15px;
+    position: relative;
+    display: inline-table;
+    vertical-align: middle;
+    line-height: 16px;
+    top: -2px; }
+
+.widget.Nmnews_News_Cat_Style_1, .widget.Nmnews_News_Cat_Style_2 {
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  padding-top: 10px;
+  margin: 0 -.75rem; }
+
+.widget.Nmnews_News_Cat_Style_2 {
+  padding-top: 0;
+  border-top: none; }
+  .widget.Nmnews_News_Cat_Style_2 .minion-posts {
+    width: 100%;
+    padding: 10px 15px; }
+    .widget.Nmnews_News_Cat_Style_2 .minion-posts .card {
+      float: left; }
 
 .card {
   font-family: Roboto;
-  padding: 15px 15px 5px; }
+  padding: 15px 15px 15px; }
   .card .card-content {
     padding: 10px 0; }
     .card .card-content .card-title {
       margin-bottom: 2px; }
 
+.leader-post, .minion-posts {
+  float: left;
+  width: 100%; }
+  .leader-post .entry-date, .minion-posts .entry-date {
+    font-size: 11px;
+    color: #999; }
+
 .leader-post {
-  position: relative; }
+  position: relative;
+  padding: 0 10px; }
+  .leader-post.multi {
+    padding: 0;
+    width: 100%; }
+    .leader-post.multi .entry-date {
+      color: #fff; }
+    .leader-post.multi .card-content {
+      padding-left: 20px;
+      padding-right: 20px;
+      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0; }
+      .leader-post.multi .card-content .card-title {
+        line-height: 1.2;
+        font-size: 1.2em;
+        color: #fff; }
+    .leader-post.multi .card {
+      float: left;
+      width: 100%; }
   .leader-post .card {
     border-radius: 0;
     box-shadow: none;
-    margin: 0; }
+    margin: 0;
+    padding: 0; }
     .leader-post .card .card-content {
       border-radius: 0; }
       .leader-post .card .card-content .card-title {
@@ -760,22 +899,25 @@ object {
   .leader-post .card-content p {
     font-size: 13px; }
 
-.leader-post:after {
-  content: '';
-  height: 1px;
-  width: calc(100% - 30px);
-  background: #e2e2e2;
-  position: absolute;
-  bottom: 0;
-  margin: 0 15px; }
+@media only screen and (min-width: 767px) {
+  .leader-post, .minion-posts {
+    float: left;
+    width: 50%; }
 
+  .widget.Nmnews_News_Cat_Style_2 .minion-posts .card {
+    width: 50%; }
+
+  .leader-post.multi .card {
+    width: 50%; } }
 .minion-posts {
   background-color: #fff;
-  padding: 5px 15px; }
+  padding: 10px 15px; }
   .minion-posts .card {
+    padding: 0;
     box-shadow: none;
     height: 90px;
-    margin-bottom: 10px; }
+    margin-top: 0;
+    margin-bottom: 8px; }
     .minion-posts .card .card-content .card-title {
       line-height: 1.2; }
   .minion-posts .card-image {
@@ -792,11 +934,27 @@ object {
   .minion-posts .card-title {
     font-size: 14px;
     font-weight: 500;
-    font-family: Roboto; }
+    font-family: Roboto;
+    margin: 0 0 2px; }
   .minion-posts .posted-date a,
   .minion-posts .posted-date a i {
     font-size: 11px; }
 
+@media only screen and (min-width: 767px) {
+  .minion-posts {
+    padding-top: 0; }
+    .minion-posts .card-image {
+      height: 85px;
+      width: 85px; }
+    .minion-posts .card-content {
+      margin-left: 90px;
+      padding: 0; } }
+@media only screen and (min-width: 1023px) {
+  .minion-posts .card-image {
+    height: 85px;
+    width: 120px; }
+  .minion-posts .card-content {
+    margin-left: 125px; } }
 .Nmnews_News_Quick_List .collection .title {
   margin: 0 0 2px;
   font-size: 14px; }
@@ -813,33 +971,6 @@ object {
 .Nmnews_News_Quick_List .posted-date {
   font-size: 11px; }
 
-@media screen and (min-width: 568px) {
-  .Nmnews_News_Cat_Style_2 .minion-posts {
-    padding: 5px 0; }
-    .Nmnews_News_Cat_Style_2 .minion-posts .card {
-      width: calc(33.33% - 25px);
-      height: auto;
-      float: left;
-      margin: 0 15px 0 10px;
-      box-sizing: border-box; }
-    .Nmnews_News_Cat_Style_2 .minion-posts .card-image {
-      position: relative;
-      width: 100%;
-      margin-bottom: 10px; }
-      .Nmnews_News_Cat_Style_2 .minion-posts .card-image img {
-        width: 100%; }
-    .Nmnews_News_Cat_Style_2 .minion-posts .card-content {
-      margin: 0; }
-    .Nmnews_News_Cat_Style_2 .minion-posts:after {
-      content: ".";
-      visibility: hidden;
-      display: block;
-      height: 0;
-      clear: both; } }
-.topic {
-  text-transform: uppercase;
-  text-decoration: underline; }
-
 .collection {
   border: none; }
   .collection.with-header h3 {
@@ -847,7 +978,9 @@ object {
     font-weight: 300;
     font-size: 18px; }
   .collection.with-header .collection-header {
-    background-color: transparent; }
+    background-color: transparent;
+    padding: 10px 0;
+    border-bottom: none; }
     .collection.with-header .collection-header .btn {
       height: 28px;
       line-height: 28px; }
@@ -856,29 +989,144 @@ object {
       position: absolute;
       right: 0;
       top: 5px;
-      right: 20px;
       text-transform: capitalize; }
-  .collection.with-header .collection-item.avatar {
+  .collection.with-header .collection-item {
+    position: relative;
     padding: 15px; }
-  .collection .collection-item.avatar .header {
-    height: 90px; }
-  .collection .collection-item.avatar .main-content {
-    display: none;
-    margin-top: 8px; }
-  .collection .collection-item.avatar .secondary-content {
-    top: unset;
-    bottom: 0;
-    font-size: 14px; }
+    .collection.with-header .collection-item.avatar {
+      padding-left: 15px; }
+    .collection.with-header .collection-item .title {
+      font-size: 14px;
+      line-height: 1.4;
+      font-weight: bold; }
+    .collection.with-header .collection-item .posted-date, .collection.with-header .collection-item .posted-date i {
+      font-size: 10px; }
+    .collection.with-header .collection-item .main-content {
+      display: none;
+      margin-top: 8px; }
+    .collection.with-header .collection-item .secondary-content {
+      position: absolute;
+      bottom: 0;
+      top: unset;
+      right: 10px;
+      font-size: 14px; }
+    .collection.with-header .collection-item img + .header {
+      min-height: 90px; }
   .collection .collection-item.avatar .title, .collection .collection-item.avatar .posted-date {
     margin-left: 115px; }
-  .collection .collection-item.avatar .title {
-    font-size: 14px;
-    line-height: 1.4;
-    font-weight: bold; }
-  .collection .collection-item.avatar .posted-date, .collection .collection-item.avatar .posted-date i {
-    font-size: 10px; }
+
+.collection-item .vm.open, article .vm.open {
+  -ms-transform: rotate(180deg);
+  /* IE 9 */
+  -webkit-transform: rotate(180deg);
+  /* Safari */
+  transform: rotate(180deg);
+  -webkit-transition: transform ease 1s;
+  transition: transform ease; }
 
 .minion-posts.mCustomScrollbar {
   max-height: 318px; }
+
+.comments-area {
+  padding: 15px;
+  background-color: #fff; }
+
+nav.navigation {
+  background-color: #fff;
+  border-bottom: 1px solid #dcdcdc; }
+  nav.navigation a {
+    color: #000; }
+
+.comments-area {
+  margin-bottom: .5em; }
+
+main.single article .featured-image {
+  height: 350px; }
+
+main.archive .featured-image, main.single .featured-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  height: inherit; }
+
+.archive .card {
+  padding: 0; }
+  .archive .card .entry {
+    padding: 8px 15px 10px; }
+.archive .entry-content {
+  display: none;
+  padding: 8px 0; }
+  .archive .entry-content p {
+    margin: 0; }
+.archive .image-holder {
+  margin-bottom: 8px;
+  height: 245px; }
+.archive .card-image {
+  height: inherit; }
+.archive .card-action {
+  border-top: none;
+  padding: 0; }
+.archive .posted-on, .archive .posted-on a {
+  color: #999; }
+.archive .more-link span {
+  position: relative; }
+.archive .more-link:after {
+  content: '>>';
+  margin-left: 5px;
+  color: #333; }
+
+@media only screen and (min-width: 599px) {
+  .archive .entry-content {
+    margin-top: 8px; }
+  .archive .image-holder {
+    position: absolute;
+    left: 0;
+    width: 245px;
+    height: 100%; }
+    .archive .image-holder .card-image {
+      height: inherit; }
+    .archive .image-holder img {
+      position: absolute;
+      width: auto; }
+  .archive .featured-image {
+    height: inherit; }
+  .archive .card .entry {
+    padding-top: 15px; }
+  .archive .image-holder + .entry {
+    margin-left: 245px; } }
+nav .nav-links i.material-icons {
+  position: absolute;
+  color: #dcdcdc;
+  vertical-align: middle;
+  font-size: 3em;
+  line-height: 64px; }
+
+.nav-previous, .nav-next {
+  position: relative; }
+  .nav-previous a, .nav-next a {
+    overflow: hidden; }
+
+.nav-previous {
+  padding-left: 35px; }
+  .nav-previous i.material-icons {
+    left: 0; }
+
+.nav-next {
+  padding-right: 35px; }
+  .nav-next i.material-icons {
+    right: 0; }
+
+.group:before,
+.group:after {
+  content: "";
+  display: table; }
+
+.group:after {
+  clear: both; }
+
+.group {
+  zoom: 1;
+  /* For IE 6/7 (trigger hasLayout) */ }
 
 /*# sourceMappingURL=style.css.map */

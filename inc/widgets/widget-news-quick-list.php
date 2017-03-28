@@ -60,18 +60,24 @@ if ( ! class_exists( 'Nmnews_News_Quick_List' ) ) :
 			if ( ! empty( $instance['title'] ) ) {
 				echo '<ul class="collection with-header">';
 				echo '<li class="collection-header">';
-				echo '<h3>' . apply_filters( 'widget_title', $instance['title'] ) . '</h3>';
-				echo '<a href="#!" class="waves-effect waves-light btn">View all</a>';
+				echo '<h4 class="block-title"><span>' . apply_filters( 'widget_title', $instance['title'] ) . '</span></h4>';
 				echo '</li>';
 			}else{
 				echo '<ul class="collection">';
 			}
 			while ( $get_featured_posts->have_posts() ) : $get_featured_posts->the_post();
+				$avatar = ( has_post_thumbnail( $post->ID ) ) ? 'avatar' : '';
 			?>
-			<li class="collection-item avatar">
-				<?php the_post_thumbnail(); ?>
+			
+			<li class="collection-item <?php echo $avatar ?>">
+				<?php
+				if ( has_post_thumbnail() ) { ?>
+					<img src="https://unsplash.it/200/300?random=<?php echo rand(10,25); ?>">
+				<?php	//the_post_thumbnail();
+				}
+				?>
 				<div class="header">
-					<h2 class="title"><?php the_title(); ?></h2>
+					<?php the_title( '<h2 class="title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
 					<?php
 						$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
 						$time_string = sprintf( $time_string,
@@ -85,10 +91,6 @@ if ( ! class_exists( 'Nmnews_News_Quick_List' ) ) :
 						);
 					?>
 				</div>
-				<div class="main-content">
-					<?php the_content(); ?>
-				</div>
-				<a href="#!" class="secondary-content vm"><i class="material-icons">expand_more</i></a>
 			</li>
 			<?php endwhile; wp_reset_postdata(); ?>
 			<?php echo '</ul>' . $after_widget;
